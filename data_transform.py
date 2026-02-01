@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 import sys
 from tqdm import tqdm
+import os
 
 def continent(country_var):
     country_space_rm = country_var.replace(" ", "%20")
@@ -40,6 +41,7 @@ def main(csv_input):
         except:
             df.at[i, "continent"] = "Unknown"
     
+    output_path = os.path.join(os.getcwd(), "output.csv")
 
     df.to_csv("output.csv", index=False)
 
